@@ -1,0 +1,5 @@
+Dans ce dossier on trouve des fichiers PHP contenant du code et qui servent d'outils.
+
+Les fichiers qui commencent par "user_" sont des actions directement accessible, par lien ou bouton, par un utilisateur.
+Les fichiers qui commencent par "db_" concernent la BDD, ils doivent donc être infaillibles et surveillés de près.
+Les autres fichiers peuvent être utilisés dans des algorithmes ou imbriqués dans des chaines.

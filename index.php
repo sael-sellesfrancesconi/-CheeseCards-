@@ -1,55 +1,78 @@
-<?php
-    session_start();
-    $token = bin2hex(random_bytes(32));
-    $_SESSION['token'] = $token;
-
-    $user = false;
-
-    if ($_GET['p'] == 'deconnect') {
-        $user = false;
-    }
-
-    if ($_GET['p'] == 'connect') {
-        $user = true;
-    }
-?>
+<?php include("./utils/ini_session.php");?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php //include(""); ?>
-    
-    <title> CheeseCards - Accueil </title>
-    <link rel="stylesheet" href="./styles.css">
+    <!-- Elements -->
+    <?php include("./src/config/head.php"); ?>
+
+    <!-- Styles du site -->
+    <link rel="stylesheet" href="./public/couleurs.css">
+    <link rel="stylesheet" href="./public/styles_main.css">
+
+    <!-- Styles externes -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    #switch-arrow {
+        position: fixed;
+        top: 50vh;
+        right: 0;
+        transform: translateY(-50%);
+        background: #333;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 24px;
+        z-index: 9999;
+        user-select: none;
+        transition: background 0.3s;
+    }
+    #switch-arrow:hover {
+        background: #555;
+    }
+    </style>
 </head>
-<body class="fromage">
-<header>
-    <a href="?p">
-        <h1><b class="special">Cheese</b>Cards <b class="special">!</b></h1>
-    </a>
-    <section id="liens_centre">
-        <a href="?p=codex"><h2>Codex</h2></a>
-        <?php if ($user === true): ?>
-            <a href="?p=buy"><h2>Acheter des fromages</h2></a>
-            <a href="?p=deconnect"><h2>Se déconnecter</h2></a>
-        <?php else: ?>
-            <a href="?p=new-account"><h2>Créer un compte</h2></a>
-        <?php endif; ?>
-    </section>
-    <section>
-        <a id="bouton" href="?p=<?= $user === true ? 'account' : 'connect' ?>">
-            <?= $user === true ? 'Mon compte' : 'Se connecter' ?>
-        </a>
-    </section>
-</header>
-<main>
-    <div id="text">
-        <h1>Vous aimez le <b class="special">fromage</b> ?</h1>
-        <p>
-            <b class="special">Collectionnez</b> les cartes de nombreux fromages, ayant chacun une identité unique.
-            <b class="special">Découvrez</b> de nouveaux goûts et de nouveaux caractères du terroir.
-        </p>
-    </div>
-</main>
+<body data-aos="fade-in" class="cheeses">
+    
+    <!-- Barre du haut -->
+    <?php include("./parts/common_header.php"); ?>
+
+    <!-- Pages (views) -->
+    <?php
+    if (isset($_GET['p']) && $_GET['p'] === 'connect')
+    {
+        include("./parts/view_connect.php");
+    } 
+    else if (isset($_GET['p']) && $_GET['p'] === 'new-account')
+    {
+        include("./parts/view_new_account.php");
+    } 
+    else if (isset($_GET['p']) && $_GET['p'] === 'home')
+    {
+        include("./parts/view_home.php");
+    }
+    else if (isset($_GET['p']) && $_GET['p'] === 'collection')
+    {
+        include("./parts/view_collection.php");
+    }
+    else if (isset($_GET['p']) && $_GET['p'] === 'collection')
+    {
+        include("./parts/view_new_card.php");
+    } 
+    else // Par défaut :
+    {
+        include("./parts/view_main.php");
+    }
+    ?>
+    <div id="switch-arrow" onclick="theme_select();">➤</div>
+
+    <!-- Scripts -->
+    <script src="./public/script_seasons.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script> AOS.init(); </script>
 </body>
-</html>
+<!-- 𝗢𝘄𝗢
+⟦ 𝗟𝗼𝘁𝗳𝗶 𝗲𝘀𝘁 𝘀𝗲𝘅𝘆 ! ⟧
+𝗨𝘄𝗨 -->
