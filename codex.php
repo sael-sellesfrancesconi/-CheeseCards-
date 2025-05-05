@@ -1,33 +1,28 @@
 <?php include("./utils/ini_session.php"); ?>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
+    <!-- Config / styles -->
     <title> CheeseCards - Codex </title>
+    <link rel="stylesheet" href="./public/styles_header.css">
+    <link rel="stylesheet" href="./public/styles_common_pages.css">
+    <?php include("./utils/common_head.php"); ?>
 </head>
-<body>
-    <div id="text">
-        <h1>Codex</h1>
-        <?php
-        include("./utils/db_access.php");
-        $stmt = $pdo->query("
-            SELECT 
-                f.id,
-                f.nom AS fromage,
-                c.nom AS categorie,
-                f.description,
-                f.image_url
-            FROM cheeses f
-            LEFT JOIN categories c ON f.categorie_id = c.id
-            ORDER BY f.id ASC
-        ");
-        
-        $fromages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+<body data-aos="fade-in" class="cheese">
     
-        foreach ($fromages as $fromage) {
-            echo "<h2>{$fromage['id']}. {$fromage['fromage']} - {$fromage['categorie']}</h2>";
-            echo "<h3>" . nl2br(htmlspecialchars($fromage['description'])) . "</h3>";
-            if (!empty($fromage['image_url'])) {
-                echo "<img src='{$fromage['image_url']}' alt='Image de {$fromage['fromage']}' style='max-width:200px;'><br>";
-            }
-            echo "<br><br>";
-        }?>
-    </div>
+    <!-- Header -->
+    <?php include("./parts/header_codex.php");?>
+    
+    <!-- Contenu -->
+	<section class="container">
+        <div class="content" id="content">
+            <?php include("./utils/show_cheeses_codex.php");?>
+        </div>
+    </section>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script> AOS.init(); </script>
+    
 </body>
+</html>

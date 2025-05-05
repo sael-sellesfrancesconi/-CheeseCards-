@@ -3,9 +3,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new-account'])) {
     
-    $pdo = new PDO('mysql:host=localhost;dbname=u211312457_fromage;charset=utf8', 'u211312457_fromage', 'bPLuPVNDK6qvyKU', [
-        /*PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION*/
-    ]);
+    include("./db_access.php");
     
     // Vérif token CSRF
     if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
@@ -20,27 +18,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new-account'])) {
 
     if (empty($id) || empty($mdp2) || empty($mdp3)) {
         $_SESSION['error'] = "Tous les champs sont requis.";
-        header("Location: ./index.php?p=new-account");
+        header("Location: ../index.php?p=new-account");
         exit;
     }
 
     if ($mdp2 !== $mdp3) {
         $_SESSION['error'] = "Les mots de passe ne correspondent pas.";
-        header("Location: ./index.php?p=new-account");
+        header("Location: ../index.php?p=new-account");
         exit;
     }
 
     if (strlen($mdp2) < 4) {
-        $_SESSION['error'] = "Le mot de passe doit contenir au moins 6 caractères.";
-        header("Location: ./index.php?p=new-account");
+        $_SESSION['error'] = "Le mot de passe doit contenir au moins 4 caractères.";
+        header("Location: ../index.php?p=new-account");
         exit;
     }
 
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
     $stmt->execute([$id]);
+    
     if ($stmt->fetchColumn() > 0) {
         $_SESSION['error'] = "Cet identifiant est déjà utilisé.";
-        header("Location: ./index.php?p=new-account");
+        header("Location: ../index.php?p=new-account");
         exit;
     }
 
@@ -53,6 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new-account'])) {
         $_SESSION['error'] = "Erreur lors de l'inscription.";
     }
 
-    header("Location: ./index.php?p=new-account");
+    header("Location: ../index.php?p=new-account");
     exit;
 }
