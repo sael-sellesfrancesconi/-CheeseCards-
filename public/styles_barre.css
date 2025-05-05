@@ -1,0 +1,26 @@
+::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track 
+{
+    background: color-mix(in srgb, var(--secondaire-2) 60%, transparent);
+}
+
+::-webkit-scrollbar-thumb 
+{
+    background: var(--principale-1);
+    border-radius: 8px;
+    transition: 0.4s ease;
+}
+
+/* Si WebKit n'est pas supporté */
+@supports not (selector(::-webkit-scrollbar))
+{
+    html 
+    {
+        scrollbar-color: var(--principale-1) color-mix(in srgb, var(--secondaire-2) 60%, transparent);
+        scrollbar-width: 12px;
+    }
+}

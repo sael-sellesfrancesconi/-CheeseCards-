@@ -1,0 +1,50 @@
+header {
+	box-shadow: -1px 5px 8px black;
+	background-color: var(--secondaire-1);
+	
+    padding-left: 2vw;
+    padding-right: 2vw;
+    height: 9vh;
+    
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	z-index : 2;
+}
+header div 
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: flex-start;
+	width: 200px;
+}
+header a 
+{
+	color: var(--link-color);
+	font-style: none;
+}
+header button:hover,
+header a:hover
+{
+    color: var(--principale-2);
+	transition: 0.3s;
+}
+header button 
+{
+    color: var(--principale-1);
+    
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+	
+	height: 100%;
+}
+header i 
+{
+	font-size: 1.5em;
+}

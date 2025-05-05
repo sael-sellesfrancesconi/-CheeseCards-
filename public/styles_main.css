@@ -1,0 +1,159 @@
+body 
+{
+    background-color: var(--principale-2);
+    color: var(--principale-1);
+    font-family: "Poppins", sans-serif;
+}
+
+header
+{
+    margin: 4px;
+    padding: 8px;
+    border-radius: 12px;
+    
+    height: 6vh;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-bottom: 3px solid var(--secondaire-2);
+}
+
+header * 
+{
+    transition: color 0.4s ease;
+    text-decoration: none;
+    color: var(--principale-1);
+}
+
+header section
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap : 2vw;
+}
+
+header #liens_centre
+{
+    position: absolute; 
+    left: 50%; 
+    transform: translate(-50%);
+}
+
+.special
+{
+    color: var(--secondaire-1);
+}
+
+header h2 
+{
+    /*border-bottom: 2px solid var(--secondaire-1);*/
+}
+
+header i
+{
+    color: var(--color-1-txt);
+    font-size: 32px;
+}
+
+header h2:hover,
+header i:hover
+{
+    color: var(--secondaire-1);
+}
+
+header #bouton
+{
+    color: var(--principale-2);
+    background-color: var(--principale-1);
+    font-size: 1.3em;
+
+    width: 180px;
+    height: 52px;
+    border-radius: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: all 0.4s ease;
+}
+
+header #bouton:hover
+{
+    color: var(--principale-1);
+    background-color: var(--secondaire-2);
+}
+
+#main-text,
+#text
+{
+    position: absolute;
+    width: 30vw;
+
+    margin: 140px;
+}
+
+#main-text h1,
+#text h1
+{
+    font-size: 4em;
+}
+
+#main-text p,
+#text p
+{
+    font-size: 2.2em;
+}
+
+form
+{
+    font-size: 1.9em;
+    position: absolute;
+    left: 12vw;
+    top: 22vh;
+    
+    width: 30vw;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="submit"],
+input[type="password"]
+{
+    font-size: 1.3rem;
+    padding: 6px;
+
+    margin-bottom: 8px;
+    height: 40px;
+    width: 96%;
+
+    color: var(--principale-1);
+    background-color: color-mix(in srgb, var(--secondaire-1) 60%, transparent);
+    border: 1px solid var(--color-2-bg);
+    border-radius: 6px;
+    box-sizing: border-box;
+
+    transition: 0.3s ease;
+}
+
+input[type="submit"]:hover
+{
+    color: var(--secondaire-1);
+    background-color: var(--principale-1);
+}
+
+img
+{
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    height: 90vh;
+}
+

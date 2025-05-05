@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track 
+{
+    background: color-mix(in srgb, var(--secondaire-2) 60%, transparent);
+}
+
+::-webkit-scrollbar-thumb 
+{
+    background: var(--principale-1);
+    border-radius: 8px;
+    transition: 0.4s ease;
+}
+
+/* Si WebKit n'est pas supporté */
+@supports not (selector(::-webkit-scrollbar))
+{
+    html 
+    {
+        scrollbar-color: var(--principale-1) color-mix(in srgb, var(--secondaire-2) 60%, transparent);
+        scrollbar-width: 12px;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--principale-2);
+    color: var(--principale-1);
+    
+    margin: 0;
+    padding: 0;
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	
+	overflow-x: hidden;
+}
+
+header #liens_centre
+{
+    position: absolute; 
+    left: 50%; 
+    transform: translate(-50%);
+}
+
+header form
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap : 0.5vw;
+}
+
+#admin-container,
+#home-container
+{
+    width: 95%;
+    
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 30px;
+    gap: 25px;
+}
+
+nav
+{
+    margin-top: 32px;
+    left: 0;
+    width: 20vw;
+    background-color: color-mix(in srgb, var(--principale-2) 80%, white);
+    padding: 15px;
+    border-radius: 16px;
+}
+
+.option
+{
+    background: var(--secondaire-2);
+    
+    padding: 8px;
+    border-radius: 16px;
+    
+    transition: all 0.16s ease-in-out;
+}
+
+.admin a,
+a
+{
+    color: var(--principale-1);
+    font-style: none;
+    text-decoration: none;
+}
+
+.admin a,
+.admin button,
+.admin input
+{
+    border-radius: 16px;
+    background: var(--secondaire-2);
+    transition: all 0.4s ease-in-out;
+    
+    text-align: center;
+    min-height: 30px;
+}
+.admin a:hover,
+.admin button:hover
+{
+    border-radius: 16px;
+    color: var(--principale-1);
+    background: var(--principale-2);
+}
+
+
+
+.option:hover
+{
+    background: var(--secondaire-1);
+    transform: scale(1.04);
+}
+
+.option-open
+{
+    background: var(--principale-1);
+    color: var(--principale-2);
+    text-align: center;
+    
+    padding: 8px;
+    border-radius: 6px;
+    margin: 0px;
+    
+    transition: all 0.16s ease-in-out;
+}
+
+.option-open:hover
+{
+    color: var(--principale-2);
+    background: var(--secondaire-1);
+}
+
+.admin button,
+input[type="text"],
+input[type="submit"],
+input[type="password"]
+{
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    width: 100%;
+    font-size: 1.2em;
+}
+input::placeholder 
+{
+    color: var(--principale-2);
+}
+
+header input[type="text"]
+{
+    border-radius: 16px;
+    margin: 0px;
+    width: 200px;
+}
+
+main
+{
+    width: 100%;   
+}
+
+.container
+{
+	margin-top: 30px;
+}
+
+.container-tirage
+{
+	margin: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	
+	gap: 50px
+}
+
+/* codex */
+
+.content 
+{
+    column-width: 320px;
+    padding-left: 16px;
+    padding-right: 8px;
+}
+
+.card 
+{
+    width: 92%;
+    margin-bottom: 15px;
+    padding: 10px;
+    
+    color: var(--principale-2);
+    background-color: var(--principale-1);
+    border-radius: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 2px 5px 6px black;
+    display: flex;
+    flex-direction: column;
+}
+
+/* -home -> pour la page des profils perso */
+.content-home
+{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    
+    transition: all 0.4s ease-in-out;
+}
+
+
+.card-home
+{
+    margin-bottom: 15px;
+    padding: 10px;
+    
+    height: 300px;
+    width: 240px;
+    
+    background-color: var(--principale-1);
+    border-radius: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 2px 5px 6px black;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+    
+    position: relative;
+    left: 0;
+    transition: left 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.card-home:not(:first-child) 
+{
+    margin-left: -170px;
+}
+
+.card-home:hover 
+{
+  transform: translateY(-20px);
+  transition: all 0.4s ease-out;
+}
+
+.card-home:hover ~ .card-home 
+{
+  position: relative;
+  left: 160px;
+  transition: all 0.4s ease-out;
+}
+
+.card-home a,
+.card a
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+	text-decoration: none;
+	color: var(--principale-2);
+	
+	width: 100%;
+	height: 100%;
+}
+
+.card img
+{
+    width: 100%;
+    border-radius: 12px;
+}
+
+.card-home img
+{
+    width: 190px;
+    max-height: 120px;
+    border-radius: 12px;
+}
+
+/* Bordel, à ne pas modifier sinon ça casse */
+
+h1 
+{
+    font-size: 26px;
+}
+
+.card h2 
+{
+    border-bottom: 3px solid var(--secondaire-1);
+    padding-bottom: 8px;
+    font-size: 22px;
+}
+
+.card-home h2 
+{
+    border-bottom: 3px solid var(--secondaire-1);
+    padding-bottom: 4px;
+    font-size: 16px;
+}
+
+.card h3 {
+	font-size: 16px;
+}
+
+.card-home h3 {
+	font-size: 14px;
+}
+
+h4 {
+    color: var(--secondaire-1);
+	text-align: right;
+	font-size: 14px;
+	min-width: 8vw;
+}
+
+.card-home h4
+{
+    text-align: left;
+}
+
+.card-text {
+    flex-grow: 1;
+}
+
+.card:hover {
+    background-color: var(--secondaire-2);
+    transition: 0.3s;
+}
+
+.admin.card:hover
+{
+    background-color: var(--principale-1);
+}
+
+.admin a
+{
+    width: 120px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.tirage
+{
+    color: var(--principale-2);
+}
